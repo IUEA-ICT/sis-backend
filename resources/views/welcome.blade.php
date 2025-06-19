@@ -53,33 +53,6 @@
                         </form>
                     </div>
                 </div>
-
-                <!-- Add this new card for displaying users -->
-                <div class="card mt-4 shadow">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Registered Users</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Registration Number</th>
-                                        <th>Created At</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user['reg_number'] }}</td>
-                                        <td>{{ $user['created_at'] }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
