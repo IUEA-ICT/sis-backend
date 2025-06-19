@@ -39,4 +39,27 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Registration failed: ' . $e->getMessage());
         }
     }
+
+    private function getUsers()
+    {
+        try {
+            $users = [];
+            $documents = $this->firebaseFirestore->collection('reg_users')->documents();
+            
+            foreach ($documents as $document) {
+                $users[] = $document->data();
+            }
+            
+            return $users;
+        } catch (\Exception $e) {
+            Log::error('Error fetching users: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function showRegistrationForm()
+    {
+        $users = $this->getUsers();
+        return view('welcome', compact('users'));
+    }
 }
